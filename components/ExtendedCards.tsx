@@ -1,8 +1,17 @@
-import { StyleSheet, Text, View } from "react-native";
+import { TouchableOpacity, StyleSheet, Text, View, Linking} from "react-native";
 import React from "react";
 import { Image } from "react-native";
 
 export default function ExtendedCards() {
+
+  const openLink = () => {
+    const url = 'https://www.holidify.com/places/agra/'; // Replace with your desired URL
+    Linking.openURL(url)
+      .then(() => console.log(`Opened ${url}`))
+      .catch((err) => console.error(`Error opening ${url}: ${err}`));
+  };
+
+
   return (
     <View style={{ marginTop: 28 }}>
       <Text style={{ fontSize: 25 }}>ExtendedCards</Text>
@@ -16,7 +25,9 @@ export default function ExtendedCards() {
           />
 
           <View style={{ flex: 1, flexDirection: "row", borderWidth:2, paddingTop:10, height:20, marginBottom:34, backgroundColor:"#5ce61c3e" }}>
-            <Text style={{ color: "#000", fontSize: 22, marginHorizontal:25 }}>ExtendedCards</Text>
+            <TouchableOpacity onPress={()=>{openLink()}}>
+             <Text style={{ color: "#000", fontSize: 22, marginHorizontal:25 }}>ExtendedCards</Text>
+            </TouchableOpacity>
             <Text style={{ color: "#000", fontSize: 22, marginHorizontal:15 }}>ExtendedCards</Text>
           </View>
         </View>
